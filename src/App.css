@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 20px;
+	color: #444;
+	text-align: center;
+	line-height: 1.5;
+}
+
+nav, footer {
+	padding: 1% 0;
+	background-color: #aaa;
+}
+
+section {
+	min-height: 60px;
+	padding: 2% 0;
+	background-color: #bbb;
+}
+  
+section:nth-child(even) {
+	background-color: #ddd;
+}
