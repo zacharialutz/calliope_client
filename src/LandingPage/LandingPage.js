@@ -13,8 +13,7 @@ function LandingPage () {
 			</header>
 
 			<section className='instructions'>
-				<h2>Landing page instructions</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id cursus orci. Morbi viverra ipsum arcu, eu pellentesque ex fringilla sit amet. Ut commodo a lectus vitae hendrerit. Nullam ut placerat est. Donec congue ante eget pellentesque sagittis. Vestibulum vulputate nibh nec nulla tristique semper.</p>
+				<p>This application generates short stories which can be used as a prompt or framework for you to expand on your own. Go to the Generator page to begin creating paragraph-length stories, randomly generated from a database of thousands of words. You can also create an account for saving and editing your favorites!</p>
 			</section>
 
 			<section className='callToAction'>

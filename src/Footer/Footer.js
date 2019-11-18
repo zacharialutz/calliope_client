@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
 	return(
 		<footer>
-			footer content
+			Copyright &copy; 2019 Zacharia Lutz<br />All Rights Reserved
 		</footer>
 	)
 }

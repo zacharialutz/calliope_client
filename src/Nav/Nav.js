@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './Nav.css';
 
 function Nav(props) {
-	let accLink = '/login';
-	let accLabel = 'Log In';
+	let accLink = '/account'; // will be '/login' once further along building login process
+	let accLabel = 'Account'; // will be 'Log In' once further along building login process
 	if (props.user) {
 		accLink = '/account';
 	}

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import NewStory from '../NewStory/NewStory';
+
 import './Generator.css';
 
 function Generator() {
@@ -7,26 +9,24 @@ function Generator() {
 		<div>
 			<section>
 				<h2>Generate Stories</h2>
+				<p>Use the checkboxes to toggle the inclusion of thematic words</p>
 				<form className='generatorForm'>
 					<label htmlFor='modern'>modern:</label>
-					<input type='checkbox' name='filter' id='modern' defaultChecked />
+					<input type='checkbox' name='modern' id='modern' defaultChecked />
 					<label htmlFor='historic'>historic:</label>
-					<input type='checkbox' name='filter' id='historic' defaultChecked /><br />
+					<input type='checkbox' name='historic' id='historic' defaultChecked /><br />
 					<label htmlFor='sci-fi'>sci-fi:</label>
-					<input type='checkbox' name='filter' id='sci-fi' defaultChecked />
+					<input type='checkbox' name='sci-fi' id='sci-fi' defaultChecked />
 					<label htmlFor='fantasy'>fantasy:</label>
-					<input type='checkbox' name='filter' id='fantasy' defaultChecked /><br />
+					<input type='checkbox' name='fantasy' id='fantasy' defaultChecked /><br />
 					<label htmlFor='numGen'>number of stories:</label>
-					<input type='number' name='number to generate' id='numGen' /><br />
+					<input type='number' name='numGen' id='numGen' defaultValue='3' /><br />
 					<input type='submit' value='Generate' />
 				</form>
 			</section>
 
 			<section className='resultList'>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id cursus orci. Morbi viverra ipsum arcu, eu pellentesque ex fringilla sit amet. Ut commodo a lectus vitae hendrerit. Nullam ut placerat est. Donec congue ante eget pellentesque sagittis. Vestibulum vulputate nibh nec nulla tristique semper. Nullam elit ex, lobortis sit amet luctus non, malesuada sit amet leo.</p>
-				<label htmlFor='saveTitle'>Title:</label>
-				<input type='text' id='saveTitle' placeholder='New Story' />
-				<button>Save</button>
+				<NewStory />
 			</section>
 		</div>
 	)
