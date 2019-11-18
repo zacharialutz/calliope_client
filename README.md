@@ -1,4 +1,4 @@
-# Storytime Generator Client Application
+# Storytime Generator Client Application - Static Wireframe
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
