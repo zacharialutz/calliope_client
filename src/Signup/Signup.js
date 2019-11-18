@@ -16,7 +16,7 @@ function Signup() {
 				<input type='password' /><br />
 				<label>retype password:</label>
 				<input type='password' /><br />
-				<input type='submit' />
+				<input type='submit' value='Submit (disabled)' disabled />
             </form>
             <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
         </section>

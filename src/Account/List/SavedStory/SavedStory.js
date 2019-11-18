@@ -21,7 +21,7 @@ class SavedStory extends React.Component {
 				<h3 onClick={() => this.toggleOpen()}>{this.props.title}</h3>
 				{this.state.open && <div>
 						<p>{this.props.content}</p>
-						<button>Edit</button><button>Delete</button>
+						<button disabled>Edit</button><button disabled>Delete</button>
 					</div>}
 			</div>
 			
