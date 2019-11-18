@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NewStory from '../NewStory/NewStory';
+import NewStory from './NewStory/NewStory';
 
 import './Generator.css';
 

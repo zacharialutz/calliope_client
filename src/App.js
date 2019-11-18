@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className = 'App'>
         <Nav user={this.state.user} />
-        <main className='content' area-live='polite'>
+        <main className='content' aria-live='polite'>
           <Route
             exact path='/'
             component={ LandingPage }
