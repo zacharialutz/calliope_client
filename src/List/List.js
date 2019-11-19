@@ -21,7 +21,7 @@ class List extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch(config.API_ENDPOINT, {
+		fetch(config.API_ENDPOINT + `/stories`, {
 		  method: 'GET',
 		  headers: {
 			'content-type': 'application/json',
