@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import List from './List/List';
+import List from '../List/List';
 
 import './Account.css';
 

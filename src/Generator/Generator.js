@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 
-import NewStory from './NewStory/NewStory';
+import NewStory from '../NewStory/NewStory';
 
 import './Generator.css';
 
