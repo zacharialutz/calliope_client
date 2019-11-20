@@ -1,15 +1,9 @@
 import React from 'react';
-import uuid from 'uuid';
+import config from '../config';
 
 import NewStory from '../NewStory/NewStory';
 
 import './Generator.css';
-
-// Gives a 1 in (num) chance to return true
-// function rollDice(num) {
-// 	if (Math.floor((Math.random() * num)) === 0) return true;
-// 	else return false;
-// }
 
 class Generator extends React.Component {
 	state = {
@@ -30,26 +24,26 @@ class Generator extends React.Component {
 		// ];
 		const num = document.getElementById('numGen').value;
 
-		const bank = [
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			'Donec id cursus orci.',
-			'Morbi viverra ipsum arcu, eu pellentesque ex fringilla sit amet.',
-			'Ut commodo a lectus vitae hendrerit.',
-			'Nullam ut placerat est.',
-			'Donec congue ante eget pellentesque sagittis.',
-			'Vestibulum vulputate nibh nec nulla tristique semper.'
-		];
-		let result = [];
-		for (let i = 0; i < num; i++) {
-			const story = bank[Math.floor( Math.random() * bank.length )];
-			result.push(<NewStory
-					key={uuid()}
-					content={story}
-				/>);
-		};
-		this.setState({
-			list: result
-		})
+		fetch(config.API_ENDPOINT + `/generator`, {
+			method: 'GET',
+			headers: {
+			  'content-type': 'application/json',
+			  'Authorization': `Bearer ${config.API_KEY}`
+			}
+		  })
+			.then(res => {
+			  if (!res.ok) {
+				throw new Error(res.status)
+			  }
+			  return res.json()
+			})
+			.then(res => {
+				const newList = res.map(item => <NewStory content={item} />)
+				this.setState({
+					list: newList
+				})
+			})
+			.catch(error => this.setState({ error }))
 	}
 
 	render() {
