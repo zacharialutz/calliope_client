@@ -17,7 +17,7 @@ function LandingPage () {
 			</section>
 
 			<section className='callToAction'>
-				<p>Begin creating paragraph-length stories, randomly generated from a database of thousands of words</p>
+				<p>Begin creating paragraph-length stories, randomly generated from a database of thousands of words.</p>
 				<h2><Link to={'/generator'}>Generate Stories -></Link></h2>
 			</section>
 

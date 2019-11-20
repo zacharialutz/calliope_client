@@ -36,7 +36,7 @@ class List extends React.Component {
 		  })
 		  .then(this.setStories)
 		  .catch(error => this.setState({ error }))
-	  }
+	}
 	
 	render() {
 		const stories = this.state.stories;

@@ -24,7 +24,7 @@ class Generator extends React.Component {
 		// ];
 		const num = document.getElementById('numGen').value;
 
-		fetch(config.API_ENDPOINT + `/generator`, {
+		fetch(config.API_ENDPOINT + `/generator?num=${num}`, {
 			method: 'GET',
 			headers: {
 			  'content-type': 'application/json',
