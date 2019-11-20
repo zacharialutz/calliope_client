@@ -62,7 +62,7 @@ class Generator extends React.Component {
 						<label htmlFor='fantasy'>fantasy:</label>
 						<input type='checkbox' name='fantasy' id='fantasy' defaultChecked /><br />
 						<label htmlFor='numGen'>number of stories:</label>
-						<input type='number' name='numGen' id='numGen' defaultValue='3' /><br />
+						<input type='number' name='numGen' id='numGen' defaultValue='3' min='1' max='10' /><br />
 						<input type='submit' value='Generate' />
 					</form>
 				</section>
