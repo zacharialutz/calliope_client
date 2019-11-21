@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Signup from '../Signup/Signup.js';
-
 import './LandingPage.css';
 
 function LandingPage () {
@@ -20,8 +18,6 @@ function LandingPage () {
 				<p>Begin creating paragraph-length stories, randomly generated from a database of thousands of words.</p>
 				<h2><Link to={'/generator'}>Generate Stories -></Link></h2>
 			</section>
-
-			<Signup />
 		</div>
 	);
 }
