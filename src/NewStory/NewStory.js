@@ -6,9 +6,10 @@ function NewStory(props) {
 	return (
 		<>
 			<p>{props.content}</p>
-			<label htmlFor='saveTitle'>Title:</label>
+			{/* <label htmlFor='saveTitle'>Title:</label>
 			<input type='text' id='saveTitle' placeholder='New Story' />
-			<button disabled>Save</button>
+			<button disabled>Save</button> */}
+			<p>- - - - -</p>
 		</>
 	)
 }
