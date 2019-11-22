@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 import config from '../config';
 
 import NewStory from '../NewStory/NewStory';
@@ -11,7 +12,6 @@ class Generator extends React.Component {
 	}
 
 	// Takes filters and number to gen
-	// TODO: Calls server to give params and recieve stories
 	// Returns list of generated stories
 	handleSubmit(e) {
 		e.preventDefault();
@@ -30,18 +30,19 @@ class Generator extends React.Component {
 			  'content-type': 'application/json',
 			  'Authorization': `Bearer ${config.API_KEY}`
 			}
-		  })
+		})
 			.then(res => {
-			  if (!res.ok) {
-				throw new Error(res.status)
-			  }
-			  return res.json()
+				if (!res.ok) {
+					throw new Error(res.status)
+			  	}
+			  	return res.json()
 			})
 			.then(res => {
-				const newList = res.map(item => <NewStory content={item} />)
+				console.log(res);
+				const newList = res.map(item => <NewStory key={uuid()} content={item} />);
 				this.setState({
 					list: newList
-				})
+				});
 			})
 			.catch(error => this.setState({ error }))
 	}
