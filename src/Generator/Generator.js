@@ -1,19 +1,19 @@
 import React from 'react';
-import uuid from 'uuid';
-import config from '../config';
+import config from '../config'
 
-import NewStory from '../NewStory/NewStory';
+import ApiContext from '../ApiContext'
 
 import './Generator.css';
 
-class Generator extends React.Component {
-	state = {
-		list: []
+export default class Generator extends React.Component {
+	static defaultProps = {
+		stories: []
 	}
+	static contextType = ApiContext
 
 	// Takes filters and number to gen
 	// Returns list of generated stories
-	handleSubmit(e) {
+	onClickSubmit(e) {
 		e.preventDefault();
 		// const queries = [
 		// 	document.getElementById('modern').value,
@@ -27,33 +27,32 @@ class Generator extends React.Component {
 		fetch(config.API_ENDPOINT + `/generator?num=${num}`, {
 			method: 'GET',
 			headers: {
-			  'content-type': 'application/json',
-			  'Authorization': `Bearer ${config.API_KEY}`
+				'content-type': 'application/json',
+				'Authorization': `Bearer ${config.API_KEY}`
 			}
 		})
 			.then(res => {
 				if (!res.ok) {
 					throw new Error(res.status)
-			  	}
-			  	return res.json()
+				}
+				return res.json()
 			})
 			.then(res => {
 				console.log(res);
-				const newList = res.map(item => <NewStory key={uuid()} content={item} />);
-				this.setState({
-					list: newList
-				});
+				this.context.onSubmit(res);
 			})
 			.catch(error => this.setState({ error }))
 	}
 
 	render() {
+		const { stories } = this.context
+
 		return (
 			<div>
 				<section>
 					<h2>Generate Stories</h2>
 					<p>Use the checkboxes to toggle the inclusion of thematic words</p>
-					<form className='generatorForm' onSubmit={e => this.handleSubmit(e)}>
+					<form className='generatorForm' onSubmit={e => this.onClickSubmit(e)}>
 						<label htmlFor='modern'>modern:</label>
 						<input type='checkbox' name='modern' id='modern' defaultChecked />
 						<label htmlFor='historic'>historic:</label>
@@ -69,11 +68,9 @@ class Generator extends React.Component {
 				</section>
 
 				<section className='resultList'>
-					{this.state.list}
+					{stories}
 				</section>
 			</div>
 		)
 	}
 }
-
-export default Generator;

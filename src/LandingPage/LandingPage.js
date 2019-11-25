@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './LandingPage.css';
 
-function LandingPage () {
+export default function LandingPage() {
 	return (
 		<div>
 			<header className='hero' role="banner">
@@ -21,5 +21,3 @@ function LandingPage () {
 		</div>
 	);
 }
-
-export default LandingPage;

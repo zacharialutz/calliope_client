@@ -1,13 +1,19 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import ApiContext from '../ApiContext'
 import List from '../List/List';
 
 import './Account.css';
 
-function Account() {
+export default class Account extends React.Component {
+	static defaultProps = {
+		list: []
+	}
+	static contextType = ApiContext;
 
-	return (
+	render () {
+		return (
 		<section>
 			<Route
 				exact path={'/account'}
@@ -15,6 +21,6 @@ function Account() {
 			/>
 		</section>
 	)
+	}
+	
 }
-
-export default Account;

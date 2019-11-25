@@ -1,50 +1,24 @@
 import React from 'react';
-import config from '../config';
 
+import ApiContext from '../ApiContext'
 import SavedStory from '../SavedStory/SavedStory';
 
 import './List.css';
 
-const stories = [];
-
-class List extends React.Component {
-	state = {
-		stories,
-		error: null
+export default class List extends React.Component {
+	static defaultProps = {
+		stories: []
 	}
+	static contextType = ApiContext
 
-	setStories = stories => {
-		this.setState({
-			stories,
-			error: null
-		})
-	}
-
-	componentDidMount() {
-		fetch(config.API_ENDPOINT + `/stories`, {
-		  method: 'GET',
-		  headers: {
-			'content-type': 'application/json',
-			'Authorization': `Bearer ${config.API_KEY}`
-		  }
-		})
-		  .then(res => {
-			if (!res.ok) {
-			  throw new Error(res.status)
-			}
-			return res.json()
-		  })
-		  .then(this.setStories)
-		  .catch(error => this.setState({ error }))
-	}
-	
 	render() {
-		const stories = this.state.stories;
+		const { list } = this.context;
+
 		return (
 			<div className='list'>
 				<h2>Your Stories</h2>
 				<ul className='storyList'>
-					{stories.map(item =>
+					{list.map(item =>
 						<SavedStory
 							key={item.id}
 							{...item}
@@ -55,5 +29,3 @@ class List extends React.Component {
 		)
 	}
 }
-
-export default List;
