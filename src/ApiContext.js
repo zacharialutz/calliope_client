@@ -11,6 +11,7 @@ export default React.createContext({
 	list: [],
 	stories: [],
 	username: null,
+	loading: false,
 	error: null,
-	onSubmit: () => {}
+	onSubmit: () => {},
 })

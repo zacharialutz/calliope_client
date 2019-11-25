@@ -27,6 +27,7 @@ export default class App extends React.Component {
     list: [],
     stories: [],
     username: null,
+    loading: false,
     error: null
   }
 
@@ -49,6 +50,7 @@ export default class App extends React.Component {
       .catch(error => this.setState({ error }))
   }
 
+  // Update state after generate submit
   onSubmit = stories => {
     this.setState({
       stories: stories.map(item => <NewStory key={uuid()} content={item} />)
@@ -63,7 +65,7 @@ export default class App extends React.Component {
       stories: this.state.stories,
       username: this.state.username,
       error: this.state.error,
-      onSubmit: this.onSubmit
+      onSubmit: this.onSubmit,
     }
 
     return (

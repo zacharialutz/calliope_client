@@ -1,7 +1,8 @@
 import React from 'react';
-import config from '../config'
+import config from '../config';
 
-import ApiContext from '../ApiContext'
+import ApiContext from '../ApiContext';
+import Loading from '../Loading/Loading';
 
 import './Generator.css';
 
@@ -10,6 +11,10 @@ export default class Generator extends React.Component {
 		stories: []
 	}
 	static contextType = ApiContext
+
+	state = {
+		loading: false
+	}
 
 	// Takes filters and number to gen
 	// Returns list of generated stories
@@ -23,6 +28,7 @@ export default class Generator extends React.Component {
 		];
 		const num = document.getElementById('numGen').value;
 
+		this.setState({ loading: true });
 		fetch(config.API_ENDPOINT + `/generator?num=${num}&modern=${filter[0]}&historic=${filter[1]}&scifi=${filter[2]}&fantasy=${filter[3]}`, {
 			method: 'GET',
 			headers: {
@@ -37,8 +43,8 @@ export default class Generator extends React.Component {
 				return res.json()
 			})
 			.then(res => {
-				console.log(res);
 				this.context.onSubmit(res);
+				this.setState({ loading: false });
 			})
 			.catch(error => this.setState({ error }))
 	}
@@ -67,7 +73,8 @@ export default class Generator extends React.Component {
 				</section>
 
 				<section className='resultList'>
-					{stories}
+					{this.state.loading && <Loading />}
+					{!this.state.loading && stories}
 				</section>
 			</div>
 		)
