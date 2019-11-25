@@ -15,16 +15,15 @@ export default class Generator extends React.Component {
 	// Returns list of generated stories
 	onClickSubmit(e) {
 		e.preventDefault();
-		// const queries = [
-		// 	document.getElementById('modern').value,
-		// 	document.getElementById('historic').value,
-		// 	document.getElementById('sci-fi').value,
-		// 	document.getElementById('fantasy').value,
-		// 	document.getElementById('numGen').value
-		// ];
+		const filter = [
+			document.getElementById('modern').checked,
+			document.getElementById('historic').checked,
+			document.getElementById('scifi').checked,
+			document.getElementById('fantasy').checked,
+		];
 		const num = document.getElementById('numGen').value;
 
-		fetch(config.API_ENDPOINT + `/generator?num=${num}`, {
+		fetch(config.API_ENDPOINT + `/generator?num=${num}&modern=${filter[0]}&historic=${filter[1]}&scifi=${filter[2]}&fantasy=${filter[3]}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
@@ -58,7 +57,7 @@ export default class Generator extends React.Component {
 						<label htmlFor='historic'>historic:</label>
 						<input type='checkbox' name='historic' id='historic' defaultChecked /><br />
 						<label htmlFor='sci-fi'>sci-fi:</label>
-						<input type='checkbox' name='sci-fi' id='sci-fi' defaultChecked />
+						<input type='checkbox' name='sci-fi' id='scifi' defaultChecked />
 						<label htmlFor='fantasy'>fantasy:</label>
 						<input type='checkbox' name='fantasy' id='fantasy' defaultChecked /><br />
 						<label htmlFor='numGen'>number of stories:</label>

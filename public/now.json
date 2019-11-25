@@ -1,5 +1,6 @@
 {
 	"version": 2,
+	"alias": "storytime-generator",
 	"name": "storytime-generator",
 	"routes": [
 		{
