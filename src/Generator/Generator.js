@@ -50,7 +50,7 @@ export default class Generator extends React.Component {
 	}
 
 	render() {
-		const { stories } = this.context
+		const stories = this.context.stories
 
 		return (
 			<div>

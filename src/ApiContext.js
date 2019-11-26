@@ -14,4 +14,5 @@ export default React.createContext({
 	loading: false,
 	error: null,
 	onSubmit: () => {},
+	onSignup: () => {}
 })

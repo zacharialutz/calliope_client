@@ -46,7 +46,7 @@ export default class App extends React.Component {
         }
         return res.json()
       })
-      .then(stories => this.setState({ stories }))
+      .then(list => this.setState({ list }))
       .catch(error => this.setState({ error }))
   }
 
@@ -55,6 +55,11 @@ export default class App extends React.Component {
     this.setState({
       stories: stories.map(item => <NewStory key={uuid()} content={item} />)
     })
+  }
+
+  // Update after sign-up
+  onSignup = user => {
+    this.setState({ username: user.username });
   }
 
   render() {
@@ -66,6 +71,7 @@ export default class App extends React.Component {
       username: this.state.username,
       error: this.state.error,
       onSubmit: this.onSubmit,
+      onSignup: this.onSignup
     }
 
     return (

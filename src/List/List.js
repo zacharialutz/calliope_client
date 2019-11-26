@@ -7,7 +7,7 @@ import './List.css';
 
 export default class List extends React.Component {
 	static defaultProps = {
-		stories: []
+		list: []
 	}
 	static contextType = ApiContext
 
