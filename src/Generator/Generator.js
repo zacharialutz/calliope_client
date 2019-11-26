@@ -24,7 +24,7 @@ export default class Generator extends React.Component {
 			document.getElementById('modern').checked,
 			document.getElementById('historic').checked,
 			document.getElementById('scifi').checked,
-			document.getElementById('fantasy').checked,
+			document.getElementById('fantasy').checked
 		];
 		const num = document.getElementById('numGen').value;
 
