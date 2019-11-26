@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../config'
 
 import ApiContext from '../ApiContext'
 import { Link } from 'react-router-dom';
@@ -7,10 +8,26 @@ import SavedStory from '../SavedStory/SavedStory';
 import './List.css';
 
 export default class List extends React.Component {
-	static defaultProps = {
-		list: []
-	}
 	static contextType = ApiContext
+
+	// Loads list of saved stories
+	componentDidMount() {
+		fetch(config.API_ENDPOINT + `/stories`, {
+		  method: 'GET',
+		  headers: {
+			'content-type': 'application/json',
+			'Authorization': `Bearer ${config.API_KEY}`
+		  }
+		})
+		  .then(res => {
+			if (!res.ok) {
+			  throw new Error(res.status)
+			}
+			return res.json()
+		  })
+		  .then(list => this.setState({ list }))
+		  .catch(error => this.setState({ error }))
+	  }
 
 	onLogout() {
 		const user = { username: null };

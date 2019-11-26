@@ -1,6 +1,5 @@
 import React from 'react';
 import uuid from 'uuid';
-import config from '../config';
 
 import ApiContext from '../ApiContext';
 import { Route } from 'react-router-dom';
@@ -29,25 +28,6 @@ export default class App extends React.Component {
     username: null,
     loading: false,
     error: null
-  }
-
-  // Loads list of saved stories
-  componentDidMount() {
-    fetch(config.API_ENDPOINT + `/stories`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${config.API_KEY}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(res.status)
-        }
-        return res.json()
-      })
-      .then(list => this.setState({ list }))
-      .catch(error => this.setState({ error }))
   }
 
   // Update state after generate submit

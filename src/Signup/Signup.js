@@ -14,10 +14,13 @@ export default class Signup extends React.Component {
 		}).isRequired,
 	  }
 
-	static contextType = ApiContext
+	state = {
+		error: null
+	}
 
-	// Takes filters and number to gen
-	// Returns list of generated stories
+	static contextType = ApiContext;
+
+	// Validates form and sends req to create user
 	onClickSubmit(e) {
 		e.preventDefault();
 		const newUser = {
@@ -58,15 +61,19 @@ export default class Signup extends React.Component {
 				<h2>Sign Up</h2>
 				<form className='signupForm' onSubmit={e => this.onClickSubmit(e)}>
 					<label>username:</label>
-					<input type='text' id='username' /><br />
+					<input type='text' id='username' required /><br />
 					<label>email:</label>
-					<input type='email' id='email' /><br />
+					<input type='email' id='email' required /><br />
 					<label>password:</label>
-					<input type='password' id='password' /><br />
+					<input type='password' id='password' required /><br />
 					<label>retype password:</label>
-					<input type='password' id='retypePassword' /><br />
+					<input type='password' id='retypePassword' required /><br />
 					<input type='submit' value='Submit' />
 				</form>
+				{this.state.error &&
+					<div className='errorMsg'>
+						<h3>{this.state.error}</h3>
+					</div>}
 				<p>Already have an account? <Link to={'/login'}>Log in</Link></p>
 			</section>
 		)
