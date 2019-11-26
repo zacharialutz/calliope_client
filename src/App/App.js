@@ -57,8 +57,8 @@ export default class App extends React.Component {
     })
   }
 
-  // Update after sign-up
-  onSignup = user => {
+  // Update user after login or signup
+  onLogin = user => {
     this.setState({ username: user.username });
   }
 
@@ -71,7 +71,7 @@ export default class App extends React.Component {
       username: this.state.username,
       error: this.state.error,
       onSubmit: this.onSubmit,
-      onSignup: this.onSignup
+      onLogin: this.onLogin
     }
 
     return (

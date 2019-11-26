@@ -31,7 +31,6 @@ export default class Signup extends React.Component {
 			return;
 		}
 
-		console.log(newUser);
 		fetch(config.API_ENDPOINT + `/users`, {
 			method: 'POST',
 			headers: {
@@ -47,8 +46,8 @@ export default class Signup extends React.Component {
 				return res.json()
 			})
 			.then(res => {
-				this.context.onSignup(res);
-				this.props.history.push('/account');
+				this.context.onLogin(res);
+				this.props.history.push(`/account`);
 			})
 			.catch(error => this.setState({ error }))
 	}
