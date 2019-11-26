@@ -2,6 +2,7 @@ import React from 'react';
 import config from '../config';
 
 import ApiContext from '../ApiContext';
+import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
 import './Generator.css';
@@ -75,6 +76,7 @@ export default class Generator extends React.Component {
 				<section className='resultList'>
 					{this.state.loading && <Loading />}
 					{!this.state.loading && stories}
+					{!this.context.username && <p>Want to save stories for later? <Link to={'/signup'}>Sign up</Link></p>}
 				</section>
 			</div>
 		)

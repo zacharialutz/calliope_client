@@ -72,7 +72,7 @@ export default class Signup extends React.Component {
 				</form>
 				{this.state.error &&
 					<div className='errorMsg'>
-						<h3>{this.state.error}</h3>
+						<h4>{this.state.error.message}</h4>
 					</div>}
 				<p>Already have an account? <Link to={'/login'}>Log in</Link></p>
 			</section>

@@ -10,6 +10,10 @@ import './List.css';
 export default class List extends React.Component {
 	static contextType = ApiContext
 
+	state = {
+		list: []
+	}
+
 	// Loads list of saved stories
 	componentDidMount() {
 		fetch(config.API_ENDPOINT + `/stories`, {
@@ -30,12 +34,11 @@ export default class List extends React.Component {
 	  }
 
 	onLogout() {
-		const user = { username: null };
-		this.context.onLogin(user);
+		this.context.onLogin({ username: null });
 	}
 
 	render() {
-		const { list } = this.context;
+		const list = this.state.list;
 
 		return (
 			<div className='list'>

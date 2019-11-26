@@ -28,13 +28,12 @@ export default class Login extends React.Component {
 			password: document.getElementById('password').value,
 		};
 
-		fetch(config.API_ENDPOINT + `/users`, {
-			method: 'POST',
+		fetch(config.API_ENDPOINT + `/users/login?username=${logUser.username}&password=${logUser.password}`, {
+			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
 				'Authorization': `Bearer ${config.API_KEY}`
 			},
-			body: JSON.stringify(logUser)
 		})
 			.then(res => {
 				if (!res.ok) {
@@ -63,7 +62,7 @@ export default class Login extends React.Component {
 					</form>
 					{this.state.error &&
 					<div className='errorMsg'>
-						<h3>{this.state.error}</h3>
+						<h4>{this.state.error.message}</h4>
 					</div>}
 					<p>Don't have an account? <Link to={'/signup'}>Sign up</Link></p>
 				</section>
