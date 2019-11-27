@@ -56,6 +56,7 @@ export default withRouter(class App extends React.Component {
       list: this.state.list,
       stories: this.state.stories,
       username: this.state.username,
+      userId: this.state.userId,
       error: this.state.error,
       onSubmit: this.onSubmit,
       onLogin: this.onLogin
