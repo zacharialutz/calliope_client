@@ -1,17 +1,28 @@
 import React from 'react';
+import config from '../config';
 
 import './NewStory.css';
 
-function NewStory(props) {
-	return (
-		<>
-			<p>{props.content}</p>
-			{/* <label htmlFor='saveTitle'>Title:</label>
-			<input type='text' id='saveTitle' placeholder='New Story' />
-			<button disabled>Save</button> */}
-			<p>- - - - -</p>
-		</>
-	)
+function saveStory(content) {
+	const newStory = {
+		
+	}
+	fetch(config.API_ENDPOINT + `/stories`, {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json',
+			'Authorization': `Bearer ${config.API_KEY}`
+		},
+		body: JSON.stringify(newStory)
+	})
 }
 
-export default NewStory;
+export default function NewStory(props) {
+	return (
+		<div>
+			<p>{props.content}</p>
+			<button className='btnSave' onCLick={() => saveStory(props.content)}>Save Story</button>
+			<p>- - - - -</p>
+		</div>
+	)
+}
