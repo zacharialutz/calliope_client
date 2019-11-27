@@ -15,7 +15,7 @@ import NewStory from '../NewStory/NewStory';
 
 import './App.css'
 
-export default class App extends React.Component {
+export default withRouter(class App extends React.Component {
   state = {
     filter: {
       modern: true,
@@ -46,7 +46,7 @@ export default class App extends React.Component {
       username: user.username,
       userId: user.id
     });
-    withRouter(({ history }) => history.push(`/account`));
+    this.props.history.push(`/account`);
   }
 
   render() {
@@ -92,4 +92,4 @@ export default class App extends React.Component {
       </ApiContext.Provider>
     );
   }
-}
+})
