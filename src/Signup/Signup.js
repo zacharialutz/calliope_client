@@ -1,6 +1,5 @@
 import React from 'react';
 import config from '../config';
-import PropTypes from 'prop-types';
 
 import ApiContext from '../ApiContext';
 import { Link } from 'react-router-dom';
@@ -8,12 +7,6 @@ import { Link } from 'react-router-dom';
 import './Signup.css';
 
 export default class Signup extends React.Component {
-	static propTypes = {
-		history: PropTypes.shape({
-		  push: PropTypes.func,
-		}).isRequired,
-	  }
-
 	state = {
 		error: null
 	}
@@ -48,10 +41,7 @@ export default class Signup extends React.Component {
 				}
 				return res.json()
 			})
-			.then(res => {
-				this.context.onLogin(res);
-				this.props.history.push(`/account`);
-			})
+			.then(res => this.context.onLogin(res))
 			.catch(error => this.setState({ error }))
 	}
 

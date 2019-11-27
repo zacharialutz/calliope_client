@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import uuid from 'uuid';
 
 import ApiContext from '../ApiContext';
@@ -26,6 +27,7 @@ export default class App extends React.Component {
     list: [],
     stories: [],
     username: null,
+    userId: null,
     loading: false,
     error: null
   }
@@ -39,7 +41,12 @@ export default class App extends React.Component {
 
   // Update user after login or signup
   onLogin = user => {
-    this.setState({ username: user.username });
+    console.log(user);
+    this.setState({
+      username: user.username,
+      userId: user.id
+    });
+    withRouter(({ history }) => history.push(`/account`));
   }
 
   render() {

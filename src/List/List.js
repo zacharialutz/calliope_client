@@ -16,7 +16,8 @@ export default class List extends React.Component {
 
 	// Loads list of saved stories
 	componentDidMount() {
-		fetch(config.API_ENDPOINT + `/stories`, {
+		console.log(this.context.userId)
+		fetch(config.API_ENDPOINT + `/stories/list/${this.context.userId}`, {
 		  method: 'GET',
 		  headers: {
 			'content-type': 'application/json',

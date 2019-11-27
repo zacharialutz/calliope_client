@@ -25,5 +25,5 @@ section:nth-child(even) {
 }
 
 .errorMsg {
-	color: red;
+	color: orangered;
 }
