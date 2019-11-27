@@ -60,13 +60,16 @@ export default withRouter(class App extends React.Component {
     this.setState({ list: newList });
   }
 
+  // Update after editing
+  updateStory = newStory => {
+    const newList = this.state.list.map(item => (item.id !== newStory.id) ? item : newStory);
+    this.setState({ list: newList })
+  }
+
   // Update list for deletion of a story
   handleDelete = id => {
-    console.log(id);
-    console.log(this.state.list);
     const newList = this.state.list.filter(item => item.id !== id);
     this.setState({ list: newList });
-    console.log(this.state.list);
   }
 
   render() {
@@ -83,6 +86,7 @@ export default withRouter(class App extends React.Component {
       onLogin: this.onLogin,
       updateSaved: this.updateSaved,
       updateList: this.updateList,
+      updateStory: this.updateStory,
       handleDelete: this.handleDelete,
     }
 

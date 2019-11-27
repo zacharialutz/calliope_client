@@ -18,5 +18,6 @@ export default React.createContext({
 	onLogin: () => {},
 	updateSaved: () => {},
 	updateList: () => {},
+	updateStory: () => {},
 	handleDelete: () => {}
 })

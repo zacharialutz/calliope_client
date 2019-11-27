@@ -13,13 +13,17 @@ export default class Account extends React.Component {
 	}
 	static contextType = ApiContext;
 
+	componentDidMount() {
+		if (!this.context.username) this.props.history.push('/');
+	}
+
 	render() {
 		return (
 			<section>
-				<Route
+				{this.context.username && <Route
 					exact path={'/account'}
 					component={List}
-				/>
+				/>}
 			</section>
 		)
 	}
