@@ -6,15 +6,15 @@ import './NewStory.css';
 
 export default class NewStory extends React.Component {
 	static defaultProps = {
-		content: ''
+		content: '',
 	}
 	static contextType = ApiContext
 
 	state = {
-		saved: false,
 		error: null
 	}
 
+	// Saves story to server and callsback to have button disabled
 	saveStory(content) {
 		const newStory = {
 			content,
@@ -34,18 +34,20 @@ export default class NewStory extends React.Component {
 				}
 				return res.json()
 			})
-			.then(() => this.setState({ saved: true }))
+			.then(() => this.context.updateSaved(this.props.id))
 			.catch(error => this.setState({ error }))
 	}
 
 	render() {
+		const saved = (this.context.savedStories.includes(this.props.id));
+
 		return (
 			<div>
 				<p>{this.props.content}</p>
 				{this.context.username &&
 					<>
-						{!this.state.saved && <button className='btnSave' onClick={() => this.saveStory(this.props.content)}>Save Story</button>}
-						{this.state.saved && <p>Saved!</p>}
+						{!saved && <button className='btnSave' onClick={() => this.saveStory(this.props.content)}>Save Story</button>}
+						{saved && <p>Saved!</p>}
 					</>
 				}
 				<p>- - - - -</p>

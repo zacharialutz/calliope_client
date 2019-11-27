@@ -1,9 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import uuid from 'uuid';
-
+import { Route, withRouter } from 'react-router-dom';
 import ApiContext from '../ApiContext';
-import { Route } from 'react-router-dom';
+
 import Nav from '../Nav/Nav.js';
 import Footer from '../Footer/Footer.js';
 import LandingPage from '../LandingPage/LandingPage.js';
@@ -26,6 +24,7 @@ export default withRouter(class App extends React.Component {
     num: 3,
     list: [],
     stories: [],
+    savedStories: [],
     username: null,
     userId: null,
     loading: false,
@@ -35,18 +34,27 @@ export default withRouter(class App extends React.Component {
   // Update state after generate submit
   onSubmit = stories => {
     this.setState({
-      stories: stories.map(item => <NewStory key={uuid()} content={item} />)
+      stories: stories.map(item => <NewStory key={stories.indexOf(item)} id={stories.indexOf(item)} content={item} />),
+      savedStories: []
     })
   }
 
   // Update user after login or signup
   onLogin = user => {
-    console.log(user);
     this.setState({
       username: user.username,
       userId: user.id
     });
-    this.props.history.push(`/account`);
+    this.props.history.goBack();
+  }
+
+  // Updates list of saved stories in NewStory to disable save button
+  updateSaved = id => {
+    const newSavedList = this.state.savedStories;
+    newSavedList.push(id);
+    this.setState({
+      savedStories: newSavedList
+    })
   }
 
   render() {
@@ -55,11 +63,13 @@ export default withRouter(class App extends React.Component {
       num: this.state.num,
       list: this.state.list,
       stories: this.state.stories,
+      savedStories: this.state.savedStories,
       username: this.state.username,
       userId: this.state.userId,
       error: this.state.error,
       onSubmit: this.onSubmit,
-      onLogin: this.onLogin
+      onLogin: this.onLogin,
+      updateSaved: this.updateSaved
     }
 
     return (

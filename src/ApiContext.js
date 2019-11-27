@@ -10,9 +10,11 @@ export default React.createContext({
 	num: 3,
 	list: [],
 	stories: [],
+	savedStories: [],
 	username: null,
 	loading: false,
 	error: null,
 	onSubmit: () => {},
-	onLogin: () => {}
+	onLogin: () => {},
+	updateSaved: () => {}
 })
