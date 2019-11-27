@@ -45,16 +45,28 @@ export default withRouter(class App extends React.Component {
       username: user.username,
       userId: user.id
     });
-    this.props.history.goBack();
+    this.props.history.push('/generator');
   }
 
   // Updates list of saved stories in NewStory to disable save button
   updateSaved = id => {
     const newSavedList = this.state.savedStories;
     newSavedList.push(id);
-    this.setState({
-      savedStories: newSavedList
-    })
+    this.setState({ savedStories: newSavedList });
+  }
+
+  // Update list for loading stories
+  updateList = newList => {
+    this.setState({ list: newList });
+  }
+
+  // Update list for deletion of a story
+  handleDelete = id => {
+    console.log(id);
+    console.log(this.state.list);
+    const newList = this.state.list.filter(item => item.id !== id);
+    this.setState({ list: newList });
+    console.log(this.state.list);
   }
 
   render() {
@@ -69,7 +81,9 @@ export default withRouter(class App extends React.Component {
       error: this.state.error,
       onSubmit: this.onSubmit,
       onLogin: this.onLogin,
-      updateSaved: this.updateSaved
+      updateSaved: this.updateSaved,
+      updateList: this.updateList,
+      handleDelete: this.handleDelete,
     }
 
     return (

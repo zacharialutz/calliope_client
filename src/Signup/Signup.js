@@ -13,6 +13,10 @@ export default class Signup extends React.Component {
 
 	static contextType = ApiContext;
 
+	componentDidMount() {
+		document.getElementById('username').focus();
+	}
+
 	// Validates form and sends req to create user
 	onClickSubmit(e) {
 		e.preventDefault();

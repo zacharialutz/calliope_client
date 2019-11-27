@@ -16,5 +16,7 @@ export default React.createContext({
 	error: null,
 	onSubmit: () => {},
 	onLogin: () => {},
-	updateSaved: () => {}
+	updateSaved: () => {},
+	updateList: () => {},
+	handleDelete: () => {}
 })

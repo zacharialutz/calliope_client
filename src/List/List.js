@@ -10,35 +10,34 @@ import './List.css';
 export default class List extends React.Component {
 	static contextType = ApiContext
 
-	state = {
-		list: []
-	}
-
 	// Loads list of saved stories
 	componentDidMount() {
 		fetch(config.API_ENDPOINT + `/stories/list/${this.context.userId}`, {
-		  method: 'GET',
-		  headers: {
-			'content-type': 'application/json',
-			'Authorization': `Bearer ${config.API_KEY}`
-		  }
-		})
-		  .then(res => {
-			if (!res.ok) {
-			  throw new Error(res.status)
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				'Authorization': `Bearer ${config.API_KEY}`
 			}
-			return res.json()
-		  })
-		  .then(list => this.setState({ list }))
-		  .catch(error => this.setState({ error }))
-	  }
+		})
+			.then(res => {
+				if (!res.ok) {
+					throw new Error(res.status)
+				}
+				return res.json()
+			})
+			.then(list => {
+				this.context.updateList(list)
+			})
+			.catch(error => this.setState({ error }))
+	}
 
+	// Log Out button
 	onLogout() {
 		this.context.onLogin({ username: null });
 	}
 
 	render() {
-		const list = this.state.list;
+		const list = this.context.list;
 
 		return (
 			<div className='list'>

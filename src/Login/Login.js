@@ -13,6 +13,10 @@ export default class Login extends React.Component {
 
 	static contextType = ApiContext;
 
+	componentDidMount() {
+		document.getElementById('username').focus();
+	}
+
 	// Validates form and sends req to update user
 	onClickSubmit(e) {
 		e.preventDefault();
