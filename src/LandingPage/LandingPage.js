@@ -7,7 +7,7 @@ export default function LandingPage() {
 	return (
 		<div>
 			<header className='hero' role="banner">
-				<h1>PenSeed</h1>
+				<h1>Calliope</h1>
 			</header>
 
 			<section className='instructions'>
