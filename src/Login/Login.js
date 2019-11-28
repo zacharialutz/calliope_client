@@ -45,8 +45,10 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<section>
+				<header>
 					<h2>Login</h2>
+				</header>
+				<section>
 					<form className='loginForm' onSubmit={e => this.onClickSubmit(e)} >
 						<label htmlFor='username'>username:</label>
 						<input type='text' name='username' id='username' required /> <br />

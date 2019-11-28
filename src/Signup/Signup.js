@@ -51,25 +51,29 @@ export default class Signup extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<h2>Sign Up</h2>
-				<form className='signupForm' onSubmit={e => this.onClickSubmit(e)}>
-					<label>username:</label>
-					<input type='text' id='username' required /><br />
-					<label>email:</label>
-					<input type='email' id='email' required /><br />
-					<label>password:</label>
-					<input type='password' id='password' required /><br />
-					<label>retype password:</label>
-					<input type='password' id='retypePassword' required /><br />
-					<input type='submit' value='Submit' />
-				</form>
-				{this.state.error &&
-					<div className='errorMsg'>
-						<h4>{this.state.error.message}</h4>
-					</div>}
-				<p>Already have an account? <Link to={'/login'}>Log in</Link></p>
-			</section>
+			<div>
+				<header>
+					<h2>Sign Up</h2>
+				</header>
+				<section>
+					<form className='signupForm' onSubmit={e => this.onClickSubmit(e)}>
+						<label>username:</label>
+						<input type='text' id='username' required /><br />
+						<label>email:</label>
+						<input type='email' id='email' required /><br />
+						<label>password:</label>
+						<input type='password' id='password' required /><br />
+						<label>retype password:</label>
+						<input type='password' id='retypePassword' required /><br />
+						<input type='submit' value='Submit' />
+					</form>
+					{this.state.error &&
+						<div className='errorMsg'>
+							<h4>{this.state.error.message}</h4>
+						</div>}
+					<p>Already have an account? <Link to={'/login'}>Log in</Link></p>
+				</section>
+			</div>
 		)
 	}
 }

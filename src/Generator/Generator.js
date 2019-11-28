@@ -21,16 +21,10 @@ export default class Generator extends React.Component {
 	// Returns list of generated stories
 	onClickSubmit(e) {
 		e.preventDefault();
-		const filter = [
-			document.getElementById('modern').checked,
-			document.getElementById('historic').checked,
-			document.getElementById('scifi').checked,
-			document.getElementById('fantasy').checked
-		];
-		const num = document.getElementById('numGen').value;
+		const { modern, historic, scifi, fantasy, num } = this.context
 
 		this.setState({ loading: true });
-		fetch(config.API_ENDPOINT + `/generator?num=${num}&modern=${filter[0]}&historic=${filter[1]}&scifi=${filter[2]}&fantasy=${filter[3]}`, {
+		fetch(config.API_ENDPOINT + `/generator?num=${num}&modern=${modern}&historic=${historic}&scifi=${scifi}&fantasy=${fantasy}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
@@ -51,24 +45,26 @@ export default class Generator extends React.Component {
 	}
 
 	render() {
-		const stories = this.context.stories;
+		const { modern, historic, scifi, fantasy, num, stories } = this.context
 
 		return (
 			<div>
-				<section>
+				<header>
 					<h2>Generate Stories</h2>
+				</header>
+				<section>
 					<p>Use the checkboxes to toggle the inclusion of thematic words</p>
 					<form className='generatorForm' onSubmit={e => this.onClickSubmit(e)}>
 						<label htmlFor='modern'>modern:</label>
-						<input type='checkbox' name='modern' id='modern' defaultChecked />
+						<input type='checkbox' name='modern' id='modern' checked={modern} onChange={e => this.context.handleChangeModern(e)} />
 						<label htmlFor='historic'>historic:</label>
-						<input type='checkbox' name='historic' id='historic' defaultChecked /><br />
+						<input type='checkbox' name='historic' id='historic' checked={historic} onChange={e => this.context.handleChangeHistoric(e)} /><br />
 						<label htmlFor='sci-fi'>sci-fi:</label>
-						<input type='checkbox' name='sci-fi' id='scifi' defaultChecked />
+						<input type='checkbox' name='scifi' id='scifi' checked={scifi} onChange={e => this.context.handleChangeScifi(e)} />
 						<label htmlFor='fantasy'>fantasy:</label>
-						<input type='checkbox' name='fantasy' id='fantasy' defaultChecked /><br />
+						<input type='checkbox' name='fantasy' id='fantasy' checked={fantasy} onChange={e => this.context.handleChangeFantasy(e)} /><br />
 						<label htmlFor='numGen'>number of stories:</label>
-						<input type='number' name='numGen' id='numGen' defaultValue='3' min='1' max='10' /><br />
+						<input type='number' name='numGen' id='numGen' value={num} min='1' max='10' onChange={e => this.context.handleChangeNum(e)} /><br />
 						<input type='submit' value='Generate' />
 					</form>
 				</section>

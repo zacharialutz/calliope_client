@@ -22,9 +22,9 @@ export default class Nav extends React.Component {
 		return (
 			<nav>
 				<Link to={'/'}>Home</Link>
-				{' '}
+				{' - '}
 				<Link to={'/generator'}>Generator</Link>
-				{' '}
+				{' - '}
 				<Link to={accLink}>{accLabel}</Link>
 			</nav>
 		)

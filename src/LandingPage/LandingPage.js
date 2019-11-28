@@ -11,7 +11,8 @@ export default function LandingPage() {
 			</header>
 
 			<section className='instructions'>
-				<p>This app generates short stories which can be used as a prompt or framework for you to expand on your own. You can also create an account for saving and editing your favorites!</p>
+				<p>This app generates short stories which can be used as a prompt to expand on your own.<br />You can also create an account for saving your favorites!</p>
+				<p>A demonstration account can be accessed with "demo" and "password".</p>
 			</section>
 
 			<section className='callToAction'>

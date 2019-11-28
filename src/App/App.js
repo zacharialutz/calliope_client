@@ -10,18 +10,18 @@ import Account from '../Account/Account';
 import Login from '../Login/Login.js';
 import Signup from '../Signup/Signup.js';
 import NewStory from '../NewStory/NewStory';
+import About from '../About/About';
 
 import './App.css'
 
 export default withRouter(class App extends React.Component {
   state = {
-    filter: {
-      modern: true,
-      historic: true,
-      scifi: true,
-      fantasy: true
-    },
+    modern: true,
+    historic: true,
+    scifi: true,
+    fantasy: true,
     num: 3,
+
     list: [],
     stories: [],
     savedStories: [],
@@ -29,6 +29,23 @@ export default withRouter(class App extends React.Component {
     userId: null,
     loading: false,
     error: null
+  }
+
+  // Input control for generator inputs
+  handleChangeModern = e => {
+    this.setState({ modern: e.target.checked });
+  }
+  handleChangeHistoric = e => {
+    this.setState({ historic: e.target.checked });
+  }
+  handleChangeScifi = e => {
+    this.setState({ scifi: e.target.checked });
+  }
+  handleChangeFantasy = e => {
+    this.setState({ fantasy: e.target.checked });
+  }
+  handleChangeNum = e => {
+    this.setState({ num: e.target.value });
   }
 
   // Update state after generate submit
@@ -74,20 +91,32 @@ export default withRouter(class App extends React.Component {
 
   render() {
     const ctx = {
-      filter: this.state.filter,
+      modern: this.state.modern,
+      historic: this.state.historic,
+      scifi: this.state.scifi,
+      fantasy: this.state.fantasy,
       num: this.state.num,
+
       list: this.state.list,
       stories: this.state.stories,
       savedStories: this.state.savedStories,
       username: this.state.username,
       userId: this.state.userId,
       error: this.state.error,
+
       onSubmit: this.onSubmit,
       onLogin: this.onLogin,
+
       updateSaved: this.updateSaved,
       updateList: this.updateList,
       updateStory: this.updateStory,
       handleDelete: this.handleDelete,
+
+      handleChangeModern: this.handleChangeModern,
+      handleChangeHistoric: this.handleChangeHistoric,
+      handleChangeScifi: this.handleChangeScifi,
+      handleChangeFantasy: this.handleChangeFantasy,
+      handleChangeNum: this.handleChangeNum
     }
 
     return (
@@ -114,6 +143,10 @@ export default withRouter(class App extends React.Component {
             <Route
               path='/signup'
               component={Signup}
+            />
+            <Route
+              path='/about'
+              component={About}
             />
           </main>
           <Footer />
