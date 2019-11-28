@@ -7,6 +7,8 @@ import './SavedStory.css'
 export default class SavedStory extends React.Component {
 	static contextType = ApiContext;
 
+	_isMounted = false;
+
 	state = {
 		id: '',
 		title: '',
@@ -19,6 +21,7 @@ export default class SavedStory extends React.Component {
 
 	// Loads state
 	componentDidMount() {
+		this._isMounted = true;
 		this.setState({
 			id: this.props.id,
 			title: this.props.title,
@@ -26,31 +29,47 @@ export default class SavedStory extends React.Component {
 		})
 	}
 
+	componentWillUnmount() {
+		this._isMounted = false;
+	}
+
 	// Input control
 	handleChangeTitle = e => {
-		this.setState({ title: e.target.value })
-	};
-	handleChangeContent = e => {
-		this.setState({ content: e.target.value })
+		if (this._isMounted) {
+			this.setState({ title: e.target.value })
+		}
 	};
 
 	// Toggles expanded view of saved story
 	toggleOpen() {
-		if (!this.state.editing) {
-			const toggle = !this.state.open;
-			this.setState({
-				open: toggle
-			});
+		if (this._isMounted) {
+			if (!this.state.editing) {
+				const toggle = !this.state.open;
+				this.setState({
+					open: toggle
+				});
+			}
 		}
 	}
 
-	// Turns on and off the edit state
-	onEdit(setting) {
-		this.setState({ editing: setting });
+	// Enables edit of story title
+	async onEdit() {
+		if (this._isMounted) {
+			await this.setState({ editing: true });
+			document.getElementById('titleEdit').focus();
+		}
+	}
+
+	// Cancels out of title edit
+	onCancel() {
+		if (this._isMounted) {
+			this.setState({ editing: false });
+		}
 	}
 
 	// Updates story in database and callbacks to refresh state
-	onSave() {
+	onSave(e) {
+		e.preventDefault();
 		const newStory = {
 			title: this.state.title,
 			content: this.state.content
@@ -70,8 +89,9 @@ export default class SavedStory extends React.Component {
 				}
 			})
 			.then(() => {
-				this.onEdit(false);
-				this.props.reload();
+				if (this._isMounted) {
+					this.setState({ editing: false })
+				}
 			})
 			.catch(error => this.setState({ error }))
 	}
@@ -101,22 +121,29 @@ export default class SavedStory extends React.Component {
 		const editing = this.state.editing;
 
 		return (
-			<div>
+			<form className='savedStory' onSubmit={e => this.onSave(e)}>
 				<h3 onClick={() => this.toggleOpen()}>
-					{!editing && this.props.title}
-					{editing && <input className='editTitle' type='text' value={this.state.title} onChange={e => this.handleChangeTitle(e)} required />}
+					{!editing && this.state.title}
+					{editing && <input
+						className='editTitle'
+						id='titleEdit'
+						type='text'
+						value={this.state.title}
+						onChange={e => this.handleChangeTitle(e)}
+						required
+					/>}
 				</h3>
 				{this.state.open && <div>
 					<p>{this.state.content}</p>
-					{!editing && <button onClick={() => this.onEdit(true)}>Edit</button>}
+					{!editing && <button onClick={() => this.onEdit()}>Edit Title</button>}
 					{editing &&
 						<>
-							<button onClick={() => this.onSave()}>Save</button>
-							<button onClick={() => this.onEdit(false)}>Cancel</button>
+							<input type='submit' value='Save' />
+							<button onClick={() => this.onCancel()}>Cancel</button>
 						</>}
 					<button onClick={() => this.onDelete()}>Delete Story</button>
 				</div>}
-			</div>
+			</form>
 
 		)
 	}

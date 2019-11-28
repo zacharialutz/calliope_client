@@ -11,7 +11,8 @@ export default class List extends React.Component {
 	static contextType = ApiContext
 
 	// Loads list of saved stories
-	loadStories() {
+	componentDidMount() {
+		this.context.updateList([]);
 		fetch(config.API_ENDPOINT + `/stories/list/${this.context.userId}`, {
 			method: 'GET',
 			headers: {
@@ -26,14 +27,10 @@ export default class List extends React.Component {
 				return res.json()
 			})
 			.then(list => {
-				list.sort(function(a,b) {return a.id - b.id});
+				list.sort(function (a, b) { return a.id - b.id });
 				this.context.updateList(list)
 			})
 			.catch(error => this.setState({ error }))
-	}
-	
-	componentDidMount() {
-		this.loadStories()
 	}
 
 	// Log Out button
@@ -50,11 +47,9 @@ export default class List extends React.Component {
 				<Link to={'/'} onClick={() => this.onLogout()}>Log Out</Link>
 				<ul className='storyList'>
 					{list.map(item =>
-						<SavedStory
-							key={item.id}
-							reload={this.loadStories}
-							{...item}
-						/>
+						<li key={item.id}>
+							<SavedStory {...item} />
+						</li>
 					)}
 				</ul>
 			</div>
