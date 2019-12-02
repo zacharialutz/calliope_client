@@ -134,7 +134,7 @@ export default class SavedStory extends React.Component {
 					/>}
 				</h3>
 				{this.state.open && <div>
-					<p>{this.state.content}</p>
+					<p className='storyText'>{this.state.content}</p>
 					{!editing && <button onClick={() => this.onEdit()}>Edit Title</button>}
 					{editing &&
 						<>

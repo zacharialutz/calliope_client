@@ -8,6 +8,7 @@ export default function LandingPage() {
 		<div>
 			<header className='hero' role="banner">
 				<h1>Calliope</h1>
+				<p className='subtitle'>(ka-LY-a-pee) the Muse of Writing</p>
 			</header>
 
 			<section className='instructions'>
@@ -17,7 +18,7 @@ export default function LandingPage() {
 
 			<section className='callToAction'>
 				<p>Begin creating paragraph-length stories, randomly generated from a database of thousands of words.</p>
-				<h2><Link to={'/generator'}>Generate Stories -></Link></h2>
+				<h3><Link to={'/generator'}>Generate Stories -></Link></h3>
 			</section>
 		</div>
 	);

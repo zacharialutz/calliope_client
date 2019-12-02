@@ -43,7 +43,7 @@ export default class NewStory extends React.Component {
 
 		return (
 			<div>
-				<p>{this.props.content}</p>
+				<p className='storyText'>{this.props.content}</p>
 				{this.context.username &&
 					<>
 						{!saved && <button className='btnSave' onClick={() => this.saveStory(this.props.content)}>Save Story</button>}

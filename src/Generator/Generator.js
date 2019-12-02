@@ -58,7 +58,7 @@ export default class Generator extends React.Component {
 						<label htmlFor='modern'>modern:</label>
 						<input type='checkbox' name='modern' id='modern' checked={modern} onChange={e => this.context.handleChangeModern(e)} />
 						<label htmlFor='historic'>historic:</label>
-						<input type='checkbox' name='historic' id='historic' checked={historic} onChange={e => this.context.handleChangeHistoric(e)} /><br />
+						<input type='checkbox' name='historic' id='historic' checked={historic} onChange={e => this.context.handleChangeHistoric(e)} />
 						<label htmlFor='sci-fi'>sci-fi:</label>
 						<input type='checkbox' name='scifi' id='scifi' checked={scifi} onChange={e => this.context.handleChangeScifi(e)} />
 						<label htmlFor='fantasy'>fantasy:</label>
