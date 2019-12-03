@@ -66,6 +66,13 @@ input {
 	padding: 2%;
 }
 
+.formRow {
+	display: flex;
+	justify-content: space-between;
+	margin: 3px auto;
+	max-width: 300px;
+}
+
 .errorMsg {
 	color: orangered;
 }

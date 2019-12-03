@@ -53,14 +53,22 @@ export default class Signup extends React.Component {
 				</header>
 				<section>
 					<form className='signupForm bordered' onSubmit={e => this.onClickSubmit(e)}>
-						<label>username:</label>
-						<input type='text' id='username' minLength='2' maxLength='16' required autoFocus/><br />
-						<label>email:</label>
-						<input type='email' id='email' required /><br />
-						<label>password:</label>
-						<input type='password' id='password' minLength='6' maxLength='20' required /><br />
-						<label>retype password:</label>
-						<input type='password' id='retypePassword' minLength='6' maxLength='20' required /><br />
+						<div className='formRow'>
+							<label>username:</label>
+							<input type='text' id='username' minLength='2' maxLength='16' required autoFocus />
+						</div>
+						<div className='formRow'>
+							<label>email:</label>
+							<input type='email' id='email' required />
+						</div>
+						<div className='formRow'>
+							<label>password:</label>
+							<input type='password' id='password' minLength='6' maxLength='20' required />
+						</div>
+						<div className='formRow'>
+							<label>retype password:</label>
+							<input type='password' id='retypePassword' minLength='6' maxLength='20' required />
+						</div>
 						<input type='submit' className='btn' value='Submit' />
 					</form>
 					{this.state.error &&
