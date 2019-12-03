@@ -54,8 +54,8 @@ export default class Generator extends React.Component {
 					<h2>Generate Stories</h2>
 				</header>
 				<section>
-					<p>Use the checkboxes to toggle the inclusion of thematic words</p>
 					<form className='generatorForm bordered' onSubmit={e => this.onClickSubmit(e)}>
+						<p>Use the checkboxes to toggle the inclusion of thematic words</p>
 						<label htmlFor='modern'>modern:</label>
 						<input type='checkbox' name='modern' id='modern' checked={modern} onChange={e => this.context.handleChangeModern(e)} />
 						<label htmlFor='historic'>historic:</label>
@@ -73,7 +73,7 @@ export default class Generator extends React.Component {
 				<section className='resultList'>
 					{this.state.loading && <Loading />}
 					{!this.state.loading && stories}
-					{!this.context.username && <p>Want to save stories for later? <Link to={'/signup'}>Sign up</Link></p>}
+					{!this.context.username && <p>Want to save stories for later?<br /><Link to={'/signup'}>Sign up</Link></p>}
 				</section>
 			</>
 		)
