@@ -7,7 +7,7 @@ Created in 2019 for the Thinkful Engineering Immersion program.
 https://calliope.now.sh
 
 ## API documentation
-Base URL: https://calliope.now.sh/api
+Base URL: https://infinite-tor-50976.herokuapp.com/api
 
 ### Generator
 Generator query may optionally contain num for number of stories, up to 10, to generate (Defaults to 1)
