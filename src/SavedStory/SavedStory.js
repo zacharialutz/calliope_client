@@ -51,6 +51,11 @@ export default class SavedStory extends React.Component {
 			}
 		}
 	}
+	keyPress(e) {
+		if (e.keyCode === 13 || 32) {
+			this.toggleOpen();
+		}
+	}
 
 	// Enables edit of story title
 	async onEdit() {
@@ -70,7 +75,7 @@ export default class SavedStory extends React.Component {
 	// Updates story in database and callbacks to refresh state
 	onSave(e) {
 		e.preventDefault();
-		
+
 		const newStory = {
 			title: this.state.title,
 			content: this.state.content
@@ -123,7 +128,7 @@ export default class SavedStory extends React.Component {
 
 		return (
 			<form className='savedStory bordered' onSubmit={e => this.onSave(e)}>
-				<h3 onClick={() => this.toggleOpen()}>
+				<h3 tabIndex='0' onKeyPress={e => this.keyPress(e)} onClick={() => this.toggleOpen()}>
 					{!editing && this.state.title}
 					{editing && <input
 						className='editTitle'
@@ -139,7 +144,7 @@ export default class SavedStory extends React.Component {
 					{!editing && <button className='btn' onClick={() => this.onEdit()}>Edit Title</button>}
 					{editing &&
 						<>
-							<input type='submit' value='Save' />
+							<input type='submit' className='btn' value='Save' />
 							<button className='btn' onClick={() => this.onCancel()}>Cancel</button>
 						</>}
 					<button className='btn' onClick={() => this.onDelete()}>Delete Story</button>
