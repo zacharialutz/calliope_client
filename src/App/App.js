@@ -52,14 +52,14 @@ export default withRouter(class App extends React.Component {
 
   // Update state after generate submit
   onSubmit = stories => {
+    this.ghostState.savedStories = [];
     this.setState({
       stories: stories.map(item =>
         <NewStory
           key={stories.indexOf(item)}
           id={stories.indexOf(item)}
           content={item}
-        />),
-      savedStories: []
+        />)
     })
   }
 
