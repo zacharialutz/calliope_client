@@ -16,12 +16,10 @@ export default class Login extends React.Component {
 	// Validates form and sends req to update user
 	onClickSubmit(e) {
 		e.preventDefault();
-		const logUser = {
-			username: document.getElementById('username').value,
-			password: document.getElementById('password').value,
-		};
+		const username = document.getElementById('username').value;
+		const password = document.getElementById('password').value;
 
-		fetch(config.API_ENDPOINT + `/users/login?username=${logUser.username}&password=${logUser.password}`, {
+		fetch(config.API_ENDPOINT + `/users/login?username=${username}&password=${password}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',

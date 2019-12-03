@@ -11,15 +11,31 @@ export default class NewStory extends React.Component {
 	static contextType = ApiContext
 
 	state = {
+		title: 'New Story',
+		saved: false,
 		error: null
 	}
 
+	// Check if already saved
+	componentDidMount() {
+		this.setState({ saved: this.context.savedStories.includes(this.props.id)})
+	}
+
+	// Input control
+	handleChangeTitle = e => {
+		this.setState({ title: e.target.value })
+	};
+
 	// Saves story to server and callsback to have button disabled
-	saveStory(content) {
+	onSave(e) {
+		e.preventDefault();
+
 		const newStory = {
-			content,
+			title: this.state.title,
+			content: this.props.content,
 			author: this.context.userId
 		}
+
 		fetch(config.API_ENDPOINT + `/stories`, {
 			method: 'POST',
 			headers: {
@@ -34,24 +50,37 @@ export default class NewStory extends React.Component {
 				}
 				return res.json()
 			})
-			.then(() => this.context.updateSaved(this.props.id))
+			.then(() => {
+				this.setState({ saved: true });
+				this.context.updateSaved(this.props.id);
+			})
 			.catch(error => this.setState({ error }))
 	}
 
 	render() {
-		const saved = (this.context.savedStories.includes(this.props.id));
+		// const saved = (this.context.savedStories.includes(this.props.id));
+		const saved = this.state.saved;
 
 		return (
-			<div>
+			<form className='newStory' onSubmit={e => this.onSave(e)}>
 				<p className='storyText'>{this.props.content}</p>
 				{this.context.username &&
 					<>
-						{!saved && <button className='btnSave' onClick={() => this.saveStory(this.props.content)}>Save Story</button>}
+						{!saved && <>
+							<label htmlFor='saveTitle'>Title:</label>
+							<input
+								type='text'
+								id='saveTitle'
+								placeholder='New Story'
+								onChange={e => this.handleChangeTitle(e)}
+							/>
+							<input type='submit' value='Save Story' />
+						</>}
 						{saved && <p>Saved!</p>}
 					</>
 				}
 				<p>- - - - -</p>
-			</div>
+			</form>
 		)
 	}
 }

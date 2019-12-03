@@ -14,8 +14,6 @@ export default React.createContext({
 	loading: false,
 	error: null,
 
-	scrollTop: () => { },
-
 	onSubmit: () => { },
 	onLogin: () => { },
 

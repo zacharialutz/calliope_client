@@ -24,17 +24,13 @@ export default withRouter(class App extends React.Component {
 
     list: [],
     stories: [],
-    savedStories: [],
     username: null,
     userId: null,
     loading: false,
     error: null
   }
-
-  // Scrolls back to top of page after link is clicked
-  scrollTop() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  ghostState = {
+    savedStories: []
   }
 
   // Input control for generator inputs
@@ -57,7 +53,13 @@ export default withRouter(class App extends React.Component {
   // Update state after generate submit
   onSubmit = stories => {
     this.setState({
-      stories: stories.map(item => <NewStory key={stories.indexOf(item)} id={stories.indexOf(item)} content={item} />)
+      stories: stories.map(item =>
+        <NewStory
+          key={stories.indexOf(item)}
+          id={stories.indexOf(item)}
+          content={item}
+        />),
+      savedStories: []
     })
   }
 
@@ -72,9 +74,7 @@ export default withRouter(class App extends React.Component {
 
   // Updates list of saved stories in NewStory to disable save button
   updateSaved = id => {
-    const newSavedList = this.state.savedStories;
-    newSavedList.push(id);
-    this.setState({ savedStories: newSavedList });
+    this.ghostState.savedStories.push(id);
   }
 
   // Update list for loading stories
@@ -104,12 +104,11 @@ export default withRouter(class App extends React.Component {
 
       list: this.state.list,
       stories: this.state.stories,
-      savedStories: this.state.savedStories,
       username: this.state.username,
       userId: this.state.userId,
       error: this.state.error,
 
-      scrollTop: this.scrollTop,
+      savedStories: this.ghostState.savedStories,
 
       onSubmit: this.onSubmit,
       onLogin: this.onLogin,

@@ -70,6 +70,7 @@ export default class SavedStory extends React.Component {
 	// Updates story in database and callbacks to refresh state
 	onSave(e) {
 		e.preventDefault();
+		
 		const newStory = {
 			title: this.state.title,
 			content: this.state.content
