@@ -1,6 +1,6 @@
 # Calliope
 Client application for Calliope story generator
-Author: Zacharia Lutz
+Author: Zacharia Lutz - zacharia.lutz@gmail.com
 Created in 2019 for the Thinkful Engineering Immersion program.
 
 ## Live app
