@@ -14,7 +14,7 @@ export default class Account extends React.Component {
 	static contextType = ApiContext;
 
 	componentDidMount() {
-		if (!this.context.username) this.props.history.push('/');
+		if (!this.context.username && this.props.history) this.props.history.push('/');
 	}
 
 	render() {

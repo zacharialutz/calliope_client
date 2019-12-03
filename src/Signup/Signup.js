@@ -13,10 +13,6 @@ export default class Signup extends React.Component {
 
 	static contextType = ApiContext;
 
-	componentDidMount() {
-		document.getElementById('username').focus();
-	}
-
 	// Validates form and sends req to create user
 	onClickSubmit(e) {
 		e.preventDefault();
@@ -58,7 +54,7 @@ export default class Signup extends React.Component {
 				<section>
 					<form className='signupForm bordered' onSubmit={e => this.onClickSubmit(e)}>
 						<label>username:</label>
-						<input type='text' id='username' maxLength='16' required /><br />
+						<input type='text' id='username' maxLength='16' required autoFocus/><br />
 						<label>email:</label>
 						<input type='email' id='email' required /><br />
 						<label>password:</label>

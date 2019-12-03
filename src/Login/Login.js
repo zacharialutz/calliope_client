@@ -13,10 +13,6 @@ export default class Login extends React.Component {
 
 	static contextType = ApiContext;
 
-	componentDidMount() {
-		document.getElementById('username').focus();
-	}
-
 	// Validates form and sends req to update user
 	onClickSubmit(e) {
 		e.preventDefault();
@@ -51,7 +47,7 @@ export default class Login extends React.Component {
 				<section>
 					<form className='loginForm bordered' onSubmit={e => this.onClickSubmit(e)} >
 						<label htmlFor='username'>username:</label>
-						<input type='text' name='username' id='username' required /> <br />
+						<input type='text' name='username' id='username' required autoFocus/> <br />
 						<label htmlFor='password'>password:</label>
 						<input type='password' name='password' id='password' required /> <br />
 						<input type='submit' className='btn' value='Log In' />
