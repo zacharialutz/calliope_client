@@ -49,12 +49,12 @@ export default class Login extends React.Component {
 					<h2>Login</h2>
 				</header>
 				<section>
-					<form className='loginForm' onSubmit={e => this.onClickSubmit(e)} >
+					<form className='loginForm bordered' onSubmit={e => this.onClickSubmit(e)} >
 						<label htmlFor='username'>username:</label>
 						<input type='text' name='username' id='username' required /> <br />
 						<label htmlFor='password'>password:</label>
 						<input type='password' name='password' id='password' required /> <br />
-						<input type='submit' value='Log In' />
+						<input type='submit' className='btn' value='Log In' />
 					</form>
 					{this.state.error &&
 					<div className='errorMsg'>

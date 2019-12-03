@@ -1,16 +1,20 @@
 import React from 'react';
+import ApiContext from '../ApiContext'
+
 import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
-function Footer() {
-	return(
-		<footer>
-			Copyright &copy; 2019 Zacharia Lutz<br />
-			<Link to={'/about'} >About this Application</Link><br />
-			All Rights Reserved
-		</footer>
-	)
-}
+export default class Footer extends React.Component {
+	static contextType = ApiContext
 
-export default Footer;
+	render() {
+		return (
+			<footer>
+				Copyright &copy; 2019 Zacharia Lutz<br />
+				<Link to={'/about'} onClick={this.context.scrollTop()} >About this Application</Link><br />
+				All Rights Reserved
+		</footer>
+		)
+	}
+}

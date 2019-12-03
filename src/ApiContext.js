@@ -14,8 +14,11 @@ export default React.createContext({
 	loading: false,
 	error: null,
 
+	scrollTop: () => { },
+
 	onSubmit: () => { },
 	onLogin: () => { },
+
 	updateSaved: () => { },
 	updateList: () => { },
 	updateStory: () => { },

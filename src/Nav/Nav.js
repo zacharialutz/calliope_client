@@ -11,21 +11,29 @@ export default class Nav extends React.Component {
 	}
 	static contextType = ApiContext
 
-	render() {
-		let accLink = '/login';
-		let accLabel = 'Log In';
-		if (this.context.username) {
-			accLink = '/account';
-			accLabel = this.context.username;
-		}
+	// Log Out button
+	onLogout() {
+		this.context.onLogin({ username: null });
+		this.context.onSubmit([]);
+	}
 
+	render() {
 		return (
 			<nav>
 				<Link to={'/'}>Home</Link>
-				{' - '}
-				<Link to={'/generator'}>Generator</Link>
-				{' - '}
-				<Link to={accLink}>{accLabel}</Link>
+				<Link to={'/generator'}>Make!</Link>
+				{!this.context.username &&
+					<>
+						<Link to={'/signup'}>Sign Up</Link>
+						<Link to={'/login'}>Log In</Link>
+					</>
+				}
+				{this.context.username &&
+					<>
+						<Link to={'/account'}>{this.context.username}</Link>
+						<Link to={'/'} onClick={() => this.onLogout()}>Log Out</Link>
+					</>
+				}
 			</nav>
 		)
 	};

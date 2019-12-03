@@ -4,10 +4,11 @@
 
 body {
 	font-family: 'Solway', serif;
-	font-size: 20px;
-	color: #444;
+	font-size: 18px;
+	color: #595052;
 	text-align: center;
 	line-height: 1.5;
+	background-color: #D1A3AE;
 }
 
 .App {
@@ -16,22 +17,53 @@ body {
 
 h1, h2 {
 	font-family: 'Milonga', cursive;
+	margin: 0;
+}
+
+h3 {
+	margin: 0;
+}
+
+header {
+	margin: 24px 0 0;
+	padding: 3% 0 1%;
+	background-color: #FFFEF2;
 }
 
 nav, footer {
 	padding: 1% 0;
-	background-color: #aaa;
-	font-size: 18px;
+	background-color: #D1A3AE;
+	font-size: 16px;
 }
 
 section {
 	min-height: 60px;
-	padding: 4%;
-	background-color: #bbb;
+	padding: 2% 4%;
+	background-color: #FFFEF2;
 }
-  
-section:nth-child(even) {
-	background-color: #ddd;
+
+a {
+	color: #595052;
+}
+
+input {
+	border: 1px solid #595052;
+	border-radius: 2px;
+	margin: 0 9px 0 2px;
+}
+
+.btn {
+	border: 1px solid #595052;
+	border-radius: 4px;
+	padding: 2px 10px 3px;
+	margin: 8px;
+	font-size: 15px;
+}
+
+.bordered {
+	border: 1px solid #595052;
+	border-radius: 8px;
+	padding: 2%;
 }
 
 .errorMsg {

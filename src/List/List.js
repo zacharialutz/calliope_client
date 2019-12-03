@@ -2,7 +2,7 @@ import React from 'react';
 import config from '../config'
 import ApiContext from '../ApiContext'
 
-import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import SavedStory from '../SavedStory/SavedStory';
 
 import './List.css';
@@ -10,9 +10,16 @@ import './List.css';
 export default class List extends React.Component {
 	static contextType = ApiContext
 
+	state = {
+		loading: false,
+		error: null
+	}
+
 	// Loads list of saved stories
 	componentDidMount() {
 		this.context.updateList([]);
+
+		this.setState({ loading: true });
 		fetch(config.API_ENDPOINT + `/stories/list/${this.context.userId}`, {
 			method: 'GET',
 			headers: {
@@ -29,13 +36,9 @@ export default class List extends React.Component {
 			.then(list => {
 				list.sort(function (a, b) { return a.id - b.id });
 				this.context.updateList(list)
+				this.setState({ loading: false });
 			})
 			.catch(error => this.setState({ error }))
-	}
-
-	// Log Out button
-	onLogout() {
-		this.context.onLogin({ username: null });
 	}
 
 	render() {
@@ -43,8 +46,7 @@ export default class List extends React.Component {
 
 		return (
 			<div className='list'>
-				<h2>Your Stories</h2>
-				<Link to={'/'} onClick={() => this.onLogout()}>Log Out</Link>
+				{this.state.loading && <Loading />}
 				<ul className='storyList'>
 					{list.map(item =>
 						<li key={item.id}>

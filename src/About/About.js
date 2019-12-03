@@ -4,7 +4,7 @@ import './About.css';
 
 export default function About() {
 	return (
-		<div>
+		<>
 			<header>
 				<h2>About</h2>
 			</header>
@@ -16,6 +16,6 @@ export default function About() {
 			<address>
 				<p>Contact me at <a href='mailto:zacharia.lutz@gmail.com'>zacharia.lutz@gmail.com</a></p>
 			</address>
-		</div>
+		</>
 	);
 }

@@ -31,6 +31,12 @@ export default withRouter(class App extends React.Component {
     error: null
   }
 
+  // Scrolls back to top of page after link is clicked
+  scrollTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
   // Input control for generator inputs
   handleChangeModern = e => {
     this.setState({ modern: e.target.checked });
@@ -51,8 +57,7 @@ export default withRouter(class App extends React.Component {
   // Update state after generate submit
   onSubmit = stories => {
     this.setState({
-      stories: stories.map(item => <NewStory key={stories.indexOf(item)} id={stories.indexOf(item)} content={item} />),
-      savedStories: []
+      stories: stories.map(item => <NewStory key={stories.indexOf(item)} id={stories.indexOf(item)} content={item} />)
     })
   }
 
@@ -103,6 +108,8 @@ export default withRouter(class App extends React.Component {
       username: this.state.username,
       userId: this.state.userId,
       error: this.state.error,
+
+      scrollTop: this.scrollTop,
 
       onSubmit: this.onSubmit,
       onLogin: this.onLogin,

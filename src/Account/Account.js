@@ -19,12 +19,17 @@ export default class Account extends React.Component {
 
 	render() {
 		return (
-			<section>
-				{this.context.username && <Route
-					exact path={'/account'}
-					component={List}
-				/>}
-			</section>
+			<>
+				<header>
+					<h2>Your Stories</h2>
+				</header>
+				<section>
+					{this.context.username && <Route
+						exact path={'/account'}
+						component={List}
+					/>}
+				</section>
+			</>
 		)
 	}
 

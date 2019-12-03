@@ -1,7 +1,7 @@
 import React from 'react';
 import config from '../config';
-
 import ApiContext from '../ApiContext';
+
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
@@ -14,7 +14,8 @@ export default class Generator extends React.Component {
 	static contextType = ApiContext
 
 	state = {
-		loading: false
+		loading: false,
+		error: null
 	}
 
 	// Takes filters and number to gen
@@ -48,13 +49,13 @@ export default class Generator extends React.Component {
 		const { modern, historic, scifi, fantasy, num, stories } = this.context
 
 		return (
-			<div>
+			<>
 				<header>
 					<h2>Generate Stories</h2>
 				</header>
 				<section>
 					<p>Use the checkboxes to toggle the inclusion of thematic words</p>
-					<form className='generatorForm' onSubmit={e => this.onClickSubmit(e)}>
+					<form className='generatorForm bordered' onSubmit={e => this.onClickSubmit(e)}>
 						<label htmlFor='modern'>modern:</label>
 						<input type='checkbox' name='modern' id='modern' checked={modern} onChange={e => this.context.handleChangeModern(e)} />
 						<label htmlFor='historic'>historic:</label>
@@ -65,7 +66,7 @@ export default class Generator extends React.Component {
 						<input type='checkbox' name='fantasy' id='fantasy' checked={fantasy} onChange={e => this.context.handleChangeFantasy(e)} /><br />
 						<label htmlFor='numGen'>number of stories:</label>
 						<input type='number' name='numGen' id='numGen' value={num} min='1' max='10' onChange={e => this.context.handleChangeNum(e)} /><br />
-						<input type='submit' value='Generate' />
+						<input type='submit' className='btn' value='Generate' />
 					</form>
 				</section>
 
@@ -74,7 +75,7 @@ export default class Generator extends React.Component {
 					{!this.state.loading && stories}
 					{!this.context.username && <p>Want to save stories for later? <Link to={'/signup'}>Sign up</Link></p>}
 				</section>
-			</div>
+			</>
 		)
 	}
 }

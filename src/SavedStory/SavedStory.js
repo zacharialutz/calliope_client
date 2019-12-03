@@ -121,7 +121,7 @@ export default class SavedStory extends React.Component {
 		const editing = this.state.editing;
 
 		return (
-			<form className='savedStory' onSubmit={e => this.onSave(e)}>
+			<form className='savedStory bordered' onSubmit={e => this.onSave(e)}>
 				<h3 onClick={() => this.toggleOpen()}>
 					{!editing && this.state.title}
 					{editing && <input
@@ -135,13 +135,13 @@ export default class SavedStory extends React.Component {
 				</h3>
 				{this.state.open && <div>
 					<p className='storyText'>{this.state.content}</p>
-					{!editing && <button onClick={() => this.onEdit()}>Edit Title</button>}
+					{!editing && <button className='btn' onClick={() => this.onEdit()}>Edit Title</button>}
 					{editing &&
 						<>
 							<input type='submit' value='Save' />
-							<button onClick={() => this.onCancel()}>Cancel</button>
+							<button className='btn' onClick={() => this.onCancel()}>Cancel</button>
 						</>}
-					<button onClick={() => this.onDelete()}>Delete Story</button>
+					<button className='btn' onClick={() => this.onDelete()}>Delete Story</button>
 				</div>}
 			</form>
 
