@@ -1,18 +1,16 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import ApiContext from '../ApiContext';
+import './App.css'
 
 import Nav from '../Nav/Nav.js';
 import Footer from '../Footer/Footer.js';
-import LandingPage from '../LandingPage/LandingPage.js';
 import Generator from '../Generator/Generator';
 import Account from '../Account/Account';
 import Login from '../Login/Login.js';
 import Signup from '../Signup/Signup.js';
 import NewStory from '../NewStory/NewStory';
 import About from '../About/About';
-
-import './App.css'
 
 export default withRouter(class App extends React.Component {
   state = {
@@ -69,7 +67,7 @@ export default withRouter(class App extends React.Component {
       username: user.username,
       userId: user.id
     });
-    this.props.history.push('/generator');
+    this.props.history.push('/');
   }
 
   // Updates list of saved stories in NewStory to disable save button
@@ -129,13 +127,13 @@ export default withRouter(class App extends React.Component {
       <ApiContext.Provider value={ctx}>
         <div className='App'>
           <Nav user={this.state.user} />
+          <header className='hero' role="banner">
+            <h1>Calliope</h1>
+            <p className='subtitle'>(<i>ka-LY-a-pee</i>) the Muse of Writing</p>
+          </header>
           <main className='content' aria-live='polite'>
             <Route
               exact path='/'
-              component={LandingPage}
-            />
-            <Route
-              path='/generator'
               component={Generator}
             />
             <Route

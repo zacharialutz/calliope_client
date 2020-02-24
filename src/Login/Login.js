@@ -1,10 +1,9 @@
 import React from 'react';
 import config from '../config';
-
 import ApiContext from '../ApiContext';
-import { Link } from 'react-router-dom';
-
 import './Login.css';
+
+import { Link } from 'react-router-dom';
 
 export default class Login extends React.Component {
 	state = {
@@ -39,9 +38,7 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<header>
-					<h2>Login</h2>
-				</header>
+				<h2>Login</h2>
 				<section>
 					<form className='loginForm bordered' onSubmit={e => this.onClickSubmit(e)} >
 						<div className='formRow'>

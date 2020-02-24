@@ -1,10 +1,9 @@
 import React from 'react';
 import config from '../config';
-
 import ApiContext from '../ApiContext';
-import { Link } from 'react-router-dom';
-
 import './Signup.css';
+
+import { Link } from 'react-router-dom';
 
 export default class Signup extends React.Component {
 	state = {
@@ -48,25 +47,23 @@ export default class Signup extends React.Component {
 	render() {
 		return (
 			<div>
-				<header>
-					<h2>Sign Up</h2>
-				</header>
+				<h2>Sign Up</h2>
 				<section>
 					<form className='signupForm bordered' onSubmit={e => this.onClickSubmit(e)}>
 						<div className='formRow'>
-							<label>username:</label>
+							<label htmlFor='username'>username:</label>
 							<input type='text' id='username' minLength='2' maxLength='16' required autoFocus />
 						</div>
 						<div className='formRow'>
-							<label>email:</label>
+							<label htmlFor='email'>email:</label>
 							<input type='email' id='email' required />
 						</div>
 						<div className='formRow'>
-							<label>password:</label>
+							<label htmlFor='password'>password:</label>
 							<input type='password' id='password' minLength='6' maxLength='20' required />
 						</div>
 						<div className='formRow'>
-							<label>retype password:</label>
+							<label htmlFor='retypePassword'>retype password:</label>
 							<input type='password' id='retypePassword' minLength='6' maxLength='20' required />
 						</div>
 						<input type='submit' className='btn' value='Submit' />

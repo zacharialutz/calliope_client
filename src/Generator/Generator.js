@@ -1,11 +1,10 @@
 import React from 'react';
 import config from '../config';
 import ApiContext from '../ApiContext';
+import './Generator.css';
 
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
-
-import './Generator.css';
 
 export default class Generator extends React.Component {
 	static defaultProps = {
@@ -50,9 +49,6 @@ export default class Generator extends React.Component {
 
 		return (
 			<>
-				<header>
-					<h2>Generate Stories</h2>
-				</header>
 				<section>
 					<form className='generatorForm bordered' onSubmit={e => this.onClickSubmit(e)}>
 						<p>Use the checkboxes to toggle the inclusion of thematic words</p>
@@ -60,7 +56,7 @@ export default class Generator extends React.Component {
 						<input type='checkbox' name='modern' id='modern' checked={modern} onChange={e => this.context.handleChangeModern(e)} />
 						<label htmlFor='historic'>historic:</label>
 						<input type='checkbox' name='historic' id='historic' checked={historic} onChange={e => this.context.handleChangeHistoric(e)} />
-						<label htmlFor='sci-fi'>sci-fi:</label>
+						<label htmlFor='scifi'>sci-fi:</label>
 						<input type='checkbox' name='scifi' id='scifi' checked={scifi} onChange={e => this.context.handleChangeScifi(e)} />
 						<label htmlFor='fantasy'>fantasy:</label>
 						<input type='checkbox' name='fantasy' id='fantasy' checked={fantasy} onChange={e => this.context.handleChangeFantasy(e)} /><br />

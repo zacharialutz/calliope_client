@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
 import ApiContext from '../ApiContext'
-import List from '../List/List';
-
 import './Account.css';
+
+import List from '../List/List';
 
 export default class Account extends React.Component {
 	static defaultProps = {
@@ -19,9 +18,7 @@ export default class Account extends React.Component {
 	render() {
 		return (
 			<>
-				<header>
-					<h2>Your Stories</h2>
-				</header>
+				<h2>Your Stories</h2>
 				<section>
 					{this.context.username && <Route
 						exact path={'/account'}

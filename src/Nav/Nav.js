@@ -20,8 +20,7 @@ export default class Nav extends React.Component {
 	render() {
 		return (
 			<nav>
-				<Link to={'/'}>Home</Link>
-				<Link to={'/generator'}>Make!</Link>
+				<Link to={'/'}>Generate</Link>
 				{!this.context.username &&
 					<>
 						<Link to={'/signup'}>Sign Up</Link>

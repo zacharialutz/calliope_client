@@ -2,10 +2,15 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--color-text: #595052;
+	--color-nav-footer: #423f40;
+}
+
 body {
 	font-family: 'Solway', serif;
 	font-size: 18px;
-	color: #595052;
+	color: var(--color-text);
 	text-align: center;
 	line-height: 1.5;
 	background-color: #D1A3AE;
@@ -13,6 +18,7 @@ body {
 
 .App {
 	font-family: 'Solway', serif;
+	background-color: #FFFEF2;
 }
 
 h1, h2 {
@@ -24,27 +30,44 @@ h3 {
 	margin: 0;
 }
 
+a {
+	color: var(--color-text);
+}
+
+nav a {
+	text-decoration: none;
+}
+nav a:hover {
+	text-decoration: underline;
+}
+
+
+
 header {
 	margin: 24px 0 0;
-	padding: 3% 0 1%;
+	padding: 2.5% 0 0.5%;
 	background-color: #FFFEF2;
 }
 
 nav, footer {
 	padding: 1% 0;
 	background-color: #D1A3AE;
+}
+
+nav, nav a, footer, footer a {
+	color: var(--color-nav-footer);
+}
+
+footer {
 	font-size: 16px;
 }
 
 section {
-	min-height: 60px;
-	padding: 2% 4%;
+	padding: 1% 5%;
 	background-color: #FFFEF2;
 }
 
-a {
-	color: #595052;
-}
+
 
 input {
 	border: 1px solid #595052;
@@ -60,12 +83,6 @@ input {
 	font-size: 15px;
 }
 
-.bordered {
-	border: 1px solid #595052;
-	border-radius: 8px;
-	padding: 2%;
-}
-
 .formRow {
 	display: flex;
 	justify-content: space-between;
@@ -75,4 +92,12 @@ input {
 
 .errorMsg {
 	color: orangered;
+}
+
+
+
+.bordered {
+	border: 1px solid #595052;
+	border-radius: 8px;
+	padding: 1%;
 }
