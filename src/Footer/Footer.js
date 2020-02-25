@@ -1,8 +1,7 @@
 import React from 'react';
+import './Footer.css';
 
 import { Link } from 'react-router-dom';
-
-import './Footer.css';
 
 // Scrolls back to top of page after link is clicked
 function scrollTop() {
@@ -13,8 +12,8 @@ function scrollTop() {
 export default function Footer() {
 	return (
 		<footer>
-			Copyright &copy; 2019 Zacharia Lutz<br />
-			<Link to={'/about'} onClick={scrollTop()} >About this Application</Link><br />
+			<Link to={'/about'} onClick={scrollTop()}>About this Application</Link><br />
+			Copyright &copy; 2020 Zacharia Lutz<br />
 			All Rights Reserved
 		</footer>
 	)
