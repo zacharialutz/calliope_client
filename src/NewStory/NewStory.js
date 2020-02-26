@@ -1,7 +1,6 @@
 import React from 'react';
 import config from '../config';
 import ApiContext from '../ApiContext'
-
 import './NewStory.css';
 
 export default class NewStory extends React.Component {
@@ -18,7 +17,7 @@ export default class NewStory extends React.Component {
 
 	// Check if already saved
 	componentDidMount() {
-		this.setState({ saved: this.context.savedStories.includes(this.props.id)})
+		this.setState({ saved: this.context.savedStories.includes(this.props.id) })
 	}
 
 	// Input control
@@ -36,14 +35,15 @@ export default class NewStory extends React.Component {
 			author: this.context.userId
 		}
 
-		fetch(config.API_ENDPOINT + `/stories`, {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json',
-				'Authorization': `Bearer ${config.API_KEY}`
-			},
-			body: JSON.stringify(newStory)
-		})
+		fetch(config.API_ENDPOINT + `/stories`,
+			{
+				method: 'POST',
+				headers: {
+					'content-type': 'application/json',
+					'Authorization': `Bearer ${config.API_KEY}`
+				},
+				body: JSON.stringify(newStory)
+			})
 			.then(res => {
 				if (!res.ok) {
 					throw new Error(res.status)

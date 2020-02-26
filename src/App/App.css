@@ -41,6 +41,10 @@ nav a:hover {
 	text-decoration: underline;
 }
 
+p {
+	margin: 15px 0;
+}
+
 
 
 header {
@@ -100,4 +104,17 @@ input {
 	border: 1px solid #595052;
 	border-radius: 8px;
 	padding: 1%;
+}
+
+.newStory, .savedStory {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+	.newStory, .savedStory {
+		max-width: 728px;
+	}
 }

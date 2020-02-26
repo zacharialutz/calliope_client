@@ -57,7 +57,8 @@ export default withRouter(class App extends React.Component {
           key={stories.indexOf(item)}
           id={stories.indexOf(item)}
           content={item}
-        />)
+        />
+      )
     })
   }
 

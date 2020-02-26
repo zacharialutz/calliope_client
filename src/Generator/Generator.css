@@ -3,3 +3,9 @@
 	margin: 0;
 	font-size: 16px;
 }
+
+.checkRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}

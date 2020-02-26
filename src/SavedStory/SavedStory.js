@@ -1,7 +1,6 @@
 import React from 'react';
 import config from '../config'
 import ApiContext from '../ApiContext'
-
 import './SavedStory.css'
 
 export default class SavedStory extends React.Component {
@@ -105,13 +104,14 @@ export default class SavedStory extends React.Component {
 	// Calls API to delete story then calls App to update state
 	onDelete() {
 		const id = this.props.id;
-		fetch(config.API_ENDPOINT + `/stories/${id}`, {
-			method: 'DELETE',
-			headers: {
-				'content-type': 'application/json',
-				'Authorization': `Bearer ${config.API_KEY}`
-			}
-		})
+		fetch(config.API_ENDPOINT + `/stories/${id}`,
+			{
+				method: 'DELETE',
+				headers: {
+					'content-type': 'application/json',
+					'Authorization': `Bearer ${config.API_KEY}`
+				}
+			})
 			.then(res => {
 				if (!res.ok) {
 					throw new Error(res.status)
@@ -130,25 +130,34 @@ export default class SavedStory extends React.Component {
 			<form className='savedStory bordered' onSubmit={e => this.onSave(e)}>
 				<h3 tabIndex='0' onKeyPress={e => this.keyPress(e)} onClick={() => this.toggleOpen()}>
 					{!editing && this.state.title}
-					{editing && <input
-						className='editTitle'
-						id='titleEdit'
-						type='text'
-						value={this.state.title}
-						onChange={e => this.handleChangeTitle(e)}
-						required
-					/>}
-				</h3>
-				{this.state.open && <div>
-					<p className='storyText'>{this.state.content}</p>
-					{!editing && <button className='btn' onClick={() => this.onEdit()}>Edit Title</button>}
 					{editing &&
-						<>
-							<input type='submit' className='btn' value='Save' />
-							<button className='btn' onClick={() => this.onCancel()}>Cancel</button>
-						</>}
-					<button className='btn' onClick={() => this.onDelete()}>Delete Story</button>
-				</div>}
+						<input
+							className='editTitle'
+							id='titleEdit'
+							type='text'
+							value={this.state.title}
+							onChange={e => this.handleChangeTitle(e)}
+							required
+						/>
+					}
+				</h3>
+				{this.state.open &&
+					<>
+						<p className='storyText'>{this.state.content}</p>
+						{!editing && <button className='btn' onClick={() => this.onEdit()}>Edit Title</button>}
+						{editing &&
+							<>
+								<input
+									type='submit'
+									className='btn'
+									value='Save'
+								/>
+								<button className='btn' onClick={() => this.onCancel()}>Cancel</button>
+							</>
+						}
+						<button className='btn' onClick={() => this.onDelete()}>Delete Story</button>
+					</>
+				}
 			</form>
 
 		)

@@ -26,14 +26,15 @@ export default class Signup extends React.Component {
 			return;
 		}
 
-		fetch(config.API_ENDPOINT + `/users`, {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json',
-				'Authorization': `Bearer ${config.API_KEY}`
-			},
-			body: JSON.stringify(newUser)
-		})
+		fetch(config.API_ENDPOINT + `/users`,
+			{
+				method: 'POST',
+				headers: {
+					'content-type': 'application/json',
+					'Authorization': `Bearer ${config.API_KEY}`
+				},
+				body: JSON.stringify(newUser)
+			})
 			.then(res => {
 				if (!res.ok) {
 					throw new Error(res.status)
@@ -52,21 +53,47 @@ export default class Signup extends React.Component {
 					<form className='signupForm bordered' onSubmit={e => this.onClickSubmit(e)}>
 						<div className='formRow'>
 							<label htmlFor='username'>username:</label>
-							<input type='text' id='username' minLength='2' maxLength='16' required autoFocus />
+							<input
+								type='text'
+								id='username'
+								minLength='2'
+								maxLength='16'
+								required
+								autoFocus
+							/>
 						</div>
 						<div className='formRow'>
 							<label htmlFor='email'>email:</label>
-							<input type='email' id='email' required />
+							<input
+								type='email'
+								id='email'
+							/>
 						</div>
 						<div className='formRow'>
 							<label htmlFor='password'>password:</label>
-							<input type='password' id='password' minLength='6' maxLength='20' required />
+							<input
+								type='password'
+								id='password'
+								minLength='6'
+								maxLength='20'
+								required
+							/>
 						</div>
 						<div className='formRow'>
 							<label htmlFor='retypePassword'>retype password:</label>
-							<input type='password' id='retypePassword' minLength='6' maxLength='20' required />
+							<input
+								type='password'
+								id='retypePassword'
+								minLength='6'
+								maxLength='20'
+								required
+							/>
 						</div>
-						<input type='submit' className='btn' value='Submit' />
+						<input
+							type='submit'
+							className='btn'
+							value='Submit'
+						/>
 					</form>
 					{this.state.error &&
 						<div className='errorMsg'>
