@@ -7,7 +7,7 @@ export default function About() {
 			<h2>About</h2>
 			<section className='aboutApp'>
 				<p>This storytelling app is named after Calliope, the Greek muse of writing and eloquence.
-				It was initially created in 2019 by Zacharia Lutz for the Thinkful Engineering Immersion program.
+				It was initially created in December of 2019 by Zacharia Lutz and was last updated in February of 2020.
 				It uses a database of thousands of nouns, verbs, and adjectives to create intruiging and hilarious short stories
 				which can be enjoyed as they are, or expanded upon for whatever purpose you desire!</p>
 				<br />
